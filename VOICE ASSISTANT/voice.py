@@ -3,7 +3,6 @@ import pyttsx3 # voice
 import subprocess # open apps
 import requests # weather
 import datetime # Date and time
-import bluetooth # bluetooth
 
 # Initialize the recognizer and speech engine
 recognizer = sr.Recognizer()
@@ -57,22 +56,9 @@ def tell_date():
     current_date = datetime.datetime.now().strftime("%B %d")
     speak(f"Today's date is {current_date}")
 
-# bluetooth
-def connect_to_bluetooth(device_name):
-    nearby_devices = bluetooth.discover_devices(lookup_names=True)
-
-    for addr, name in nearby_devices:
-        if device_name.lower() in name.lower():
-            try:
-                bluetooth.connect(addr)
-                return f"Connected to {name}."
-            except Exception as e:
-                return f"Error connecting to {name}: {e}"
-
-    return "Bluetooth device not found."
-
 def assistant():
     weather_api_key = "ac83d86e4d234fc98bccbec87daefd4f"
+    speak("Welcome Aiman, how may I help you?")
     
     while True:
         command = listen().lower()
@@ -114,12 +100,6 @@ def assistant():
         # Date
         elif "tell date" in command:
             tell_date()
-
-        # bluetooth
-        elif "connect bluetooth" in command:
-            device_name = input("Which Bluetooth device would you like to connect to? ")
-            result = connect_to_bluetooth(device_name)
-            speak(result)
 
         # Stop
         elif "stop" in command:
