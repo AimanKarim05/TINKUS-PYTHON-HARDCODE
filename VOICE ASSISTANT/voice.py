@@ -137,8 +137,9 @@ def assistant():
 
         # Facial feature detection
         elif "scan my face" in command:
+            speak("scanning face, please wait a few seconds.")
             detect_facial_features()
-            speak("Looking sharp boss!")
+            speak("scanning complete, looking sharp boss!")
 
         # Stop
         elif "stop" in command:
@@ -148,8 +149,9 @@ def assistant():
         # Add more commands and responses as needed
 
         else:
-            speak("Sorry, I don't understand.")
+            speak("Sorry, I don't understand. Could you try repeating that?")
 
 # Run the assistant
 assistant()
+
 
