@@ -92,13 +92,13 @@ def detect_facial_features():
 
 def assistant():
     weather_api_key = "ac83d86e4d234fc98bccbec87daefd4f"
-    speak("Welcome Aiman, how may I help you?")
+    speak("Welcome, how may I help you?")
 
     while True:
         command = listen().lower()
 
         if "hello" in command:
-            speak("Hey Aiman, what's up?")
+            speak("Hey, what's up?")
 
         elif "what's your name" in command:
             speak("I am Tinkus, your virtual assistant.")
@@ -136,12 +136,13 @@ def assistant():
             tell_date()
 
         # Facial feature detection
-        elif "turn on camera" in command:
+        elif "scan my face" in command:
             detect_facial_features()
+            speak("Looking sharp boss!")
 
         # Stop
         elif "stop" in command:
-            speak("Goodbye Aiman!")
+            speak("Goodbye!")
             break
 
         # Add more commands and responses as needed
